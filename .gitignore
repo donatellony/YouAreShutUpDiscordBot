@@ -363,3 +363,6 @@ FodyWeavers.xsd
 
 #NuGet switcher
 *.nugetreferenceswitcher
+
+#AppSettings
+**/appsettings.*
