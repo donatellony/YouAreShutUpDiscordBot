@@ -10,7 +10,7 @@ using YouAreShutUpBot.Init;
 using YouAreShutUpBot.Services;
 
 var config = new ConfigurationBuilder()
-    .AddJsonFile($"appsettings.json")
+    //.AddJsonFile($"appsettings.json")
     .AddEnvironmentVariables()
     .Build();
 var client = new DiscordShardedClient();
@@ -45,7 +45,7 @@ async Task MainAsync()
     };
 
     // Login and connect.
-    var token = config.GetRequiredSection("Settings")["DiscordBotToken"];
+    var token = config.GetRequiredSection("DiscordBotToken").Value;
     if (string.IsNullOrWhiteSpace(token))
     {
         await Logger.Log(LogSeverity.Error, $"{nameof(Program)} | {nameof(MainAsync)}", "Token is null or empty.");
