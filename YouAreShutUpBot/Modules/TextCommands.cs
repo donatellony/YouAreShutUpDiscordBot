@@ -6,7 +6,7 @@ using RunMode = Discord.Commands.RunMode;
 
 namespace YouAreShutUpBot.Modules;
 
-public class TextCommands : ModuleBase<ShardedCommandContext>
+public class TextCommands : BaseCommands
 {
     public CommandService CommandService { get; set; }
 
