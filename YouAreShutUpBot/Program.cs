@@ -46,6 +46,8 @@ async Task MainAsync()
 
     // Login and connect.
     var token = Environment.GetEnvironmentVariable("DiscordBotToken");
+    await Logger.Log(LogSeverity.Info, "Start!", $"Starting! {token}");
+    Console.WriteLine($"Starting! {token}");
     if (string.IsNullOrWhiteSpace(token))
     {
         var tokenErrorMessage = "Token is null or empty.";
