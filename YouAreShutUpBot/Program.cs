@@ -45,11 +45,12 @@ async Task MainAsync()
     };
 
     // Login and connect.
-    var token = config.GetRequiredSection("DiscordBotToken").Value;
+    var token = Environment.GetEnvironmentVariable("DiscordBotToken");
     if (string.IsNullOrWhiteSpace(token))
     {
-        await Logger.Log(LogSeverity.Error, $"{nameof(Program)} | {nameof(MainAsync)}", "Token is null or empty.");
-        return;
+        var tokenErrorMessage = "Token is null or empty.";
+        await Logger.Log(LogSeverity.Error, $"{nameof(Program)} | {nameof(MainAsync)}", tokenErrorMessage);
+        throw new ArgumentNullException(tokenErrorMessage);
     }
 
     await client.LoginAsync(TokenType.Bot, token);
